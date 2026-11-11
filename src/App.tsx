@@ -1,7 +1,7 @@
 
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
-import DashboardLayout from "./components/layout/DashboardLayout";
+import DashboardLayout from "./components/Layout/DashboardLayout";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";

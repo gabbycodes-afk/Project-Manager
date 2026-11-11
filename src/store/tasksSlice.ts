@@ -1,6 +1,5 @@
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 import type { Task, CreateTaskData, TaskStatus } from "../types";
 
 interface TasksState {
@@ -69,12 +68,19 @@ const tasksSlice = createSlice({
         localStorage.setItem("tasks", JSON.stringify(state.tasks));
       })
       .addCase(updateTaskStatus.fulfilled, (state, action) => {
-        const task = state.tasks.find((item) => item.id === action.payload.id);
+        const task = state.tasks.find(
+          (item) => item.id === action.payload.id
+        );
+
         if (task) task.status = action.payload.status;
+
         localStorage.setItem("tasks", JSON.stringify(state.tasks));
       })
       .addCase(deleteTask.fulfilled, (state, action) => {
-        state.tasks = state.tasks.filter((task) => task.id !== action.payload);
+        state.tasks = state.tasks.filter(
+          (task) => task.id !== action.payload
+        );
+
         localStorage.setItem("tasks", JSON.stringify(state.tasks));
       });
   },
